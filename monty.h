@@ -8,6 +8,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+global_t globv;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,12 +40,21 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void free_stacky(void)
+{
+	free_dlistint(globv.head);
+	fclose(globv.fd);
+	free(globv.buffer);
+}
+
 
 void push(stack_t **heady, unsigned int nmbr_line);
 void pall(stack_t **heady, unsigned int nmbr_line);
 void pint(stack_t **heady, unsigned int nmbr_line);
 void pop(stack_t **heady, unsigned int nmbr_line);
 void swap(stack_t **heady, unsigned int nmbr_line);
+void free_staky(void);
+parse_line(liny, line_nmbr, &stacky);
 
 
 #endif
